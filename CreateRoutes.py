@@ -60,3 +60,38 @@ try:
 
 except Exception as err:
     print(err.args[0])
+
+  
+  #
+expression = "roadClass(!TYPE!)" 
+codeblock = """def roadClass(type):
+    if type == "A1":
+        return "AA001"
+    elif type == "A2":
+        return "A002"
+    elif type == "A3":
+        return "A003"
+    elif type == "A4":
+        return "A004"
+    elif type == "A5":
+        return "A005"
+    elif type == "A6":
+        return "A006"
+    elif type == "A7":
+        return "A007"
+    else:
+        return type"""
+
+
+# Execute AddField
+arcpy.AddField_management(roadsfull, "ROADT", "TEXT")
+ 
+# Execute CalculateField 
+arcpy.CalculateField_management(roadsfull, "ROADT", expression, "PYTHON", codeblock) 
+
+
+rid = "ROADT" 
+out_routes = "SLRoutes" 
+
+# Execute CreateRoutes
+arcpy.CreateRoutes_lr(roadsfull, rid, out_routes, "LENGTH", "#", "#",  "LOWER_LEFT")
