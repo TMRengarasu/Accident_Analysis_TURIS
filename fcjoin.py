@@ -1,5 +1,5 @@
 #created by Dr. T.M. Rengarsu under TURIS project.
-#
+#This code joins the transporttion feature classes of Sri Lanka and add spation references(Kandawala grid)
 
 import os
 import arcpy
