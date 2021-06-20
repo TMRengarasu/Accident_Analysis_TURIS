@@ -18,9 +18,12 @@ def fcs_in_workspace(workspace):
         pointFcList.append(os.path.join(folder,"places\point"))          
     return pointFcList
 
+# folder Location
+folderLocation="F:\\Backup\\E\\localgis\\trunk\\surveynew\\Luse_Trans"
+
 
 # Check the functions
-fclist = fcs_in_workspace("F:\\Backup\\E\\localgis\\trunk\\surveynew\\Luse_Trans")
+fclist = fcs_in_workspace(folderLocation)
 print fclist
 
 
@@ -36,7 +39,7 @@ Final_out_feature_class="F:\\Backup\\E\\localgis\\trunk\\points\\kmpoint\\kmpoin
 
 
 # main work done here
-for fc in fcs_in_workspace("F:\\Backup\\E\\localgis\\trunk\\surveynew\\Luse_Trans"):
+for fc in fcs_in_workspace(folderLocation):
     where_clause ="""{0} = '{1}'""".format(arcpy.AddFieldDelimiters(fc, field_name),state_value)
     arcpy.analysis.Select(fc, out_feature_class, where_clause)
     arcpy.Append_management(out_feature_class, Final_out_feature_class)
